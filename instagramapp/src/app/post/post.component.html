@@ -1,0 +1,63 @@
+<div *ngFor="let igPost of igPosts" style="margin-bottom: 15px">
+  <div class="card-wrapper flex-container">
+    <div class="card-header grid">
+      <div class="header-img-container flex-container">
+        <img class="card-header-img" src="{{ igPost.user_img }}" alt="" />
+      </div>
+      <span class="card-title"> {{ igPost.user_name }} </span>
+
+      <span class="card-subtitle">{{ igPost.user_name }}</span>
+      <div class="card-opt-btn flex-container">
+        <i class="bi bi-three-dots"></i>
+      </div>
+    </div>
+    <div class="card-img-container">
+      <img *ngIf="igPost.isImg" class="card-img" src="{{ igPost.post }}" alt="">
+
+      <video id="{{igPost.id}} bgVideo" *ngIf="igPost.isVideo" width="100%" height="100%" autoplay loop muted>
+        <source src="{{ igPost.post }}" type="video/mp4">
+      </video>
+      <a id="MuteButton" class="muted" (click)="toggleMute()"><i class="fa-solid fa-volume-xmark" style="font-size: 20px;"></i></a>
+
+    </div>
+    <div class="card-data flex-container">
+      <div class="card-icons flex-container">
+        <span class="card-icon card-icon-left"
+          ><i class="bi bi-heart"></i
+        ></span>
+        <span class="card-icon card-icon-left"><i class="bi bi-chat"></i></span>
+        <span class="card-icon card-icon-left"><i class="bi bi-send"></i></span>
+        <span class="card-icon card-icon-right"
+          ><i class="bi bi-bookmark"></i
+        ></span>
+      </div>
+      <span class="bold card-text">{{ igPost.likes }} Likes</span>
+      <span *ngIf="igPost.post_caption" class="card-text">
+        <span class="bold title-margin">{{ igPost.user_name }}</span
+        >{{ igPost.post_caption }}</span
+      >
+      <span *ngIf="igPost.comments.length > 0" class="card-text">{{
+        igPost.comments[0] 
+      }}</span>
+      <span
+        class="card-text comments-btn"
+        *ngIf="igPost.comments.length > 1"
+        (click)="openDialog(igPost)"
+        >View all {{ igPost.comments.length }} comments</span
+      >
+      <span class="card-text"></span>
+      <!-- <div class="add-comment-container flex-container">
+        <span class="card-icon"><i class="bi bi-emoji-smile"></i></span>
+        <div class="comment-container">
+          <input
+            class="comment-input"
+            type="text"
+            placeholder="Add a comment...."
+          />
+        </div>
+
+        <a href="#" class="publish">Post</a>
+      </div> -->
+    </div>
+  </div>
+</div>

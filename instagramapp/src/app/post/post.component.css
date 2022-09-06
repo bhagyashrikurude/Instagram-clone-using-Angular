@@ -1,0 +1,36 @@
+.mute {
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Mute_Icon.svg/500px-Mute_Icon.svg.png);
+}
+.unmute {
+  background-image: url(http://cdn.osxdaily.com/wp-content/uploads/2010/11/sound-icon.png);
+}
+#bgVideo{
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  position: fixed;
+  object-fit: cover;
+}
+#muteButton::before {
+  content:  '🔈';
+}
+
+#muteButton.muted::before {
+  content:  '🔇';
+}
+
+#muteButton {
+position: fixed;
+top: 1rem;
+right: 1rem;
+background: rgba(0,0,0,.5);
+border: none;
+color: #fff;
+z-index: 5;
+font-size: 2rem;
+border-radius: 2rem;
+width: 4rem;
+height: 4rem;
+line-height: 4rem;
+text-align: center;
+}

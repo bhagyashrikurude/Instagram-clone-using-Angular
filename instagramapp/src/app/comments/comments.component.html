@@ -1,0 +1,99 @@
+<mat-dialog-content class="mat-typography">
+  <div class="post-container">
+    <div class="post">
+      <div id="image-container">
+        <!-- portrait image -->
+        <img *ngIf="user.isImg" id="image" src="{{ user.post }}" />
+        <video
+          *ngIf="user.isVideo"
+          autoplay 
+          muted
+          src="{{ user.post }}"
+        ></video>
+      </div>
+
+      <div id="info-container">
+        <div id="username">
+          <div class="card-header grid">
+            <div class="header-img-container flex-container">
+              <img class="card-header-img" src="{{ user.user_img }}" alt="" />
+            </div>
+            <span class="card-title"> {{ user.user_name }}</span>
+            <div class="card-opt-btn flex-container">
+              <i class="bi bi-three-dots"></i>
+            </div>
+          </div>
+        </div>
+        <div id="comments">
+          <div *ngFor="let comment of user.comments" class="comment">
+            <div class="card-header grid">
+              <div class="header-img-container flex-container">
+                <img
+                  class="card-header-img"
+                  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                  alt=""
+                />
+              </div>
+              <span class="card-title"> bhagyashri</span>
+              <div class="card-opt-btn flex-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  fill="currentColor"
+                  class="bi bi-heart"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                  />
+                </svg>
+              </div>
+              <div class="comment-info">
+                <div class="flex-container me-5">
+                  <span style="padding-left: 14px" class="bold title-margin"
+                    >{{ comment }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="stats" style="height: 100%;">
+          <div class="flex-container">
+            <div class="card-icons flex-container">
+              <span class="card-icon card-icon-left"
+                ><i class="bi bi-heart"></i
+              ></span>
+              <span class="card-icon card-icon-left"
+                ><i class="bi bi-chat"></i
+              ></span>
+              <span class="card-icon card-icon-left"
+                ><i class="bi bi-send"></i
+              ></span>
+              <span class="card-icon card-icon-right"
+                ><i class="bi bi-bookmark"></i
+              ></span>
+            </div>
+          </div>
+          <div>
+            <span>{{ user.likes }}</span> <span *ngIf="user.isImg">Likes</span>
+            <span *ngIf="!user.isImg">Views</span>
+          </div>
+          <div class="add-comment-container flex-container">
+            <span class="card-icon"><i class="bi bi-emoji-smile"></i></span>
+            <div class="comment-container">
+              <input
+                class="comment-input"
+                type="text"
+                placeholder="Add a comment...."
+              />
+            </div>
+
+            <a href="#" class="publish">Post</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
